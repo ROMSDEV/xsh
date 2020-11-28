@@ -9,7 +9,7 @@ import (
 const (
 	PluginsDir    = "./plugins"
 	CmdSymbolName = "Commands"
-	DefaultPrompt = "gosh>"
+	DefaultPrompt = "xsh>"
 )
 
 func GetStdout(ctx context.Context) io.Writer {
@@ -17,7 +17,7 @@ func GetStdout(ctx context.Context) io.Writer {
 	if ctx == nil {
 		return out
 	}
-	if outVal := ctx.Value("gosh.stdout"); outVal != nil {
+	if outVal := ctx.Value("xsh.stdout"); outVal != nil {
 		if stdout, ok := outVal.(io.Writer); ok {
 			out = stdout
 		}
@@ -30,7 +30,7 @@ func GetPrompt(ctx context.Context) string {
 	if ctx == nil {
 		return prompt
 	}
-	if promptVal := ctx.Value("gosh.prompt"); promptVal != nil {
+	if promptVal := ctx.Value("xsh.prompt"); promptVal != nil {
 		if p, ok := promptVal.(string); ok {
 			prompt = p
 		}

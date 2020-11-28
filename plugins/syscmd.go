@@ -9,7 +9,7 @@ import (
 	"runtime"
 	"strconv"
 
-	"github.com/vladimirvivien/gosh/api"
+	"github.com/ROMSDEV/xsh/api"
 )
 
 // helpCmd represents the `help` command
@@ -30,7 +30,7 @@ func (h helpCmd) Exec(ctx context.Context, args []string) (context.Context, erro
 
 	out := api.GetStdout(ctx)
 
-	cmdsVal := ctx.Value("gosh.commands")
+	cmdsVal := ctx.Value("xsh.commands")
 	if cmdsVal == nil {
 		return ctx, errors.New("nil context")
 	}
@@ -104,7 +104,7 @@ func (c promptCmd) Exec(ctx context.Context, args []string) (context.Context, er
 	if len(args) < 2 {
 		return ctx, errors.New("unable to set prompt, see usage")
 	}
-	return context.WithValue(ctx, "gosh.prompt", args[1]), nil
+	return context.WithValue(ctx, "xsh.prompt", args[1]), nil
 }
 
 // sysinfoCmd implements a command that returns system information

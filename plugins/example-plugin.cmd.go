@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/vladimirvivien/gosh/api"
+	"github.com/ROMSDEV/xsh/api"
 )
 
 // Make sure to replace `exampleCmd` with
@@ -37,7 +37,7 @@ func (t exampleCmd) Exec(ctx context.Context, args []string) (context.Context, e
 type exampleCmds struct{}
 
 func (t *exampleCmds) Init(ctx context.Context) error {
-	out := ctx.Value("gosh.stdout").(io.Writer)
+	out := ctx.Value("xsh.stdout").(io.Writer)
 
 	// If you want something to happen when the module
 	// loads, put it here,

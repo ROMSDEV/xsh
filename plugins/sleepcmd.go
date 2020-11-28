@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/vladimirvivien/gosh/api"
+	"github.com/ROMSDEV/xsh/api"
 	"io"
 	"strconv"
 	"time"
@@ -28,7 +28,7 @@ func (s sleepCmd) Exec(ctx context.Context, args []string) (context.Context, err
 		time.Sleep(time.Duration(duration) * time.Second)
 		return ctx, nil
 	}
-	out := ctx.Value("gosh.stdout").(io.Writer)
+	out := ctx.Value("xsh.stdout").(io.Writer)
 	fmt.Fprintln(out, s.Usage())
 	return ctx, nil
 
@@ -37,7 +37,7 @@ func (s sleepCmd) Exec(ctx context.Context, args []string) (context.Context, err
 type sleepCmds struct{}
 
 func (s *sleepCmds) Init(ctx context.Context) error {
-	out := ctx.Value("gosh.stdout").(io.Writer)
+	out := ctx.Value("xsh.stdout").(io.Writer)
 	fmt.Fprintln(out, "sleep module loaded")
 	return nil
 }

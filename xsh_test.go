@@ -22,7 +22,7 @@ func TestShellNew(t *testing.T) {
 func TestShellInit(t *testing.T) {
 	shell := New()
 	shell.pluginsDir = testPluginsDir
-	ctx := context.WithValue(context.TODO(), "gosh.stdout", os.Stdout)
+	ctx := context.WithValue(context.TODO(), "xsh.stdout", os.Stdout)
 	if err := shell.Init(ctx); err != nil {
 		t.Fatal(err)
 	}
@@ -42,13 +42,13 @@ func TestShellHandle(t *testing.T) {
 	shell := New()
 	shell.pluginsDir = testPluginsDir
 
-	ctx := context.WithValue(context.TODO(), "gosh.stdout", os.Stdout)
+	ctx := context.WithValue(context.TODO(), "xsh.stdout", os.Stdout)
 	if err := shell.Init(ctx); err != nil {
 		t.Fatal(err)
 	}
 
 	helloOut := bytes.NewBufferString("")
-	shell.ctx = context.WithValue(context.TODO(), "gosh.stdout", helloOut)
+	shell.ctx = context.WithValue(context.TODO(), "xsh.stdout", helloOut)
 	if _, err := shell.handle(shell.ctx, "testhello"); err == nil {
 		t.Error("this test should have failed with command not found")
 	}
@@ -61,7 +61,7 @@ func TestShellHandle(t *testing.T) {
 	}
 
 	byeOut := bytes.NewBufferString("")
-	shell.ctx = context.WithValue(context.TODO(), "gosh.stdout", byeOut)
+	shell.ctx = context.WithValue(context.TODO(), "xsh.stdout", byeOut)
 	if _, err := shell.handle(shell.ctx, "goodbye"); err != nil {
 		t.Error(err)
 	}
